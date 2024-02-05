@@ -5,7 +5,41 @@ import time
 app = Flask(__name__)
 pip = None
 @app.route('/')
+def home():
+    return render_template('home.html')
 def index():
+    return render_template('index.html')
+
+@app.route('/install_hrms')
+def install_hrms():
+    # Logic for installing HRMS app goes here
+    # ...
+
+    # Redirect to the index.html page after installation
+    return render_template('index.html')
+
+@app.route('/install_health')
+def install_health():
+    # Logic for installing HRMS app goes here
+    # ...
+
+    # Redirect to the index.html page after installation
+    return render_template('index.html')
+
+@app.route('/install_builder')
+def install_builder():
+    # Logic for installing HRMS app goes here
+    # ...
+
+    # Redirect to the index.html page after installation
+    return render_template('index.html')
+
+@app.route('/install_help_desk')
+def install_help_desk():
+    # Logic for installing HRMS app goes here
+    # ...
+
+    # Redirect to the index.html page after installation
     return render_template('index.html')
 
 @app.route('/execute', methods=['POST'])
