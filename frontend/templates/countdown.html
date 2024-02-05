@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid blue;
+            border-right: 16px solid green;
+            border-bottom: 16px solid red;
+            border-left: 16px solid pink;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        .steps-list {
+            counter-reset: li;
+  list-style-type: none;
+  font-size: 14px;
+  line-height: 18px;
+  padding-left: 10px;
+  
+  li {
+    position: relative;   
+    padding: 5px 0 5px 30px;
+    
+    &:before {
+      content: counter(li);
+      counter-increment: li;
+      height: 20px;
+      width: 20px;
+      border: 1px solid blue;
+      border-radius: 50%;
+      color: red;
+      text-align: center;
+      position: absolute;      
+      left: 0;
+      top: 4px;
+    }
+  }
+        }
+
+        .green {
+            color: green !important;
+            font-weight: bold;
+        }
+        .numberCircle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+
+    font: 32px Arial, sans-serif;
+}
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <title>Countdown Timer</title>
+    <script>
+        function startCountdown() {
+            var count = 15 * 60;  // 20 minutes
+            var timer = setInterval(function () {
+                count--;
+                var minutes = Math.floor(count / 60);
+                var seconds = count % 60;
+                document.getElementById('countdown').innerText = minutes + 'm ' + seconds + 's';
+                if (count <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('message').innerText = 'You can access your app on http://{{ pip }}:7000';
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body onload="startCountdown()">
+    <div class="container mt-5">
+        <h2>Countdown Timer</h2>
+        <p>Time remaining: <span id="countdown"></span></p>
+        <div class="container mt-5">
+            <div class="loader"></div>
+            <div class="col-md-6">
+                <h4>Steps:</h4>
+                <ul id="stepsList" class="steps-list">
+                    <li id="step1">Initialising the setup</li>
+                    <li id="step2">Procuring server</li>
+                    <li id="step3">Installing dependencies</li>
+                    <li id="step4">Frappe installtion</li>
+                    <li id="step5">Installing App</li>
+                    <li id="step6">Creating site</li>
+                    <li id="step7">Installing HRMS on site</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            // Add the 'green' class to each step after a delay
+            const steps = document.getElementById('stepsList').getElementsByTagName('li');
+            for (let i = 0; i < steps.length; i++) {
+                setTimeout(() => {
+                    steps[i].classList.add('green');
+                }, i * 120000); // 5000 milliseconds (5 seconds) delay for each step
+            }
+        </script>
+        <!-- Bootstrap JS and Popper.js (Optional) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-rbs5F7u3FNE/Oa7kLv4A+LnLHWdzlqBe5xGAXISfku2BruePI9U1hElwojvXCJ8b" crossorigin="anonymous"></script>    
+        <p id="message"></p>
+    </div>
+</body>
+</html>

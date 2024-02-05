@@ -1,0 +1,17 @@
+version: '3'
+services:
+  frontend-app:
+    build: frontend
+    ports:
+      - "5000:5000"  
+    networks:
+      - common_network      
+  backend-app:
+    build: backend
+    ports:
+      - "3000:3000"
+    networks:
+      - common_network    
+networks:
+  common_network:
+    driver: bridge  
