@@ -2,6 +2,10 @@
 
 Frontend App is an application that simplifies the deployment of Frappe-based apps on a remote Ubuntu instance. It combines a Node.js backend for handling deployments and a Flask frontend for user interaction.
 ![Home Page](https://github.com/argadepp/fronten-app/blob/master/images/home.JPG)
+
+![Deploy App](https://github.com/argadepp/fronten-app/blob/master/images/details.JPG)
+
+![Process Page](https://github.com/argadepp/fronten-app/blob/master/images/process.JPG)
 ## Quick Start
 
 1. Clone the repository:
